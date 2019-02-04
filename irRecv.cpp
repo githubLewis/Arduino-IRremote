@@ -90,6 +90,15 @@ int  IRrecv::decode (decode_results *results)
 	if (decodeLegoPowerFunctions(results))  return true ;
 #endif
 
+#ifdef DECODE_NERF_LOP
+  DBG_PRINTLN("Attempting Nerf LOP decode");
+  if (decodeNerf_LOP(results))  return true ;
+#endif
+
+#ifdef DECODE_LTTO
+  DBG_PRINTLN("Attempting LTTO decode");
+  if (decodeLTTO(results))  return true ;
+#endif
 	// decodeHash returns a hash on any input.
 	// Thus, it needs to be last in the list.
 	// If you add any decodes, add them before this.
